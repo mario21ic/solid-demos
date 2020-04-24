@@ -9,8 +9,17 @@ namespace OpenClosed
             Empleado empleado = new Empleado();
             empleado.Nombre = persona.Nombre;
             empleado.Apellidos = persona.Apellidos;
-            empleado.Email = $"{empleado.Nombre}.{empleado.Apellidos}@mario21ic.com";
-            empleado.EsIngeniero = persona.EsIngeniero;
+
+            switch(persona.Rol) {
+                case Rol.Ingeniero:
+                    empleado.Email = $"{empleado.Nombre}.{empleado.Apellidos}.ing@mario21ic.com";
+                    break;
+                case Rol.Tecnico:
+                    empleado.Email = $"{empleado.Nombre}.{empleado.Apellidos}.tec@mario21ic.com";
+                    break;
+            }
+
+            empleado.Rol = persona.Rol;
 
             return empleado;
         }
