@@ -8,20 +8,18 @@ namespace OpenClosed
     {
         static void Main(string[] args)
         {
-            List<Persona> personas = new List<Persona>(){
-              new Persona{ Nombre="Ivan", Apellidos="Cuadros", Rol = Rol.Tecnico},
-              new Persona{ Nombre="Juan", Apellidos="Perez", Rol = Rol.Ingeniero},
-              new Persona{ Nombre="Steve", Apellidos="Jobs", Rol = Rol.Tecnico},
+            List<IPostulante> personas = new List<IPostulante>(){
+              new Persona{ Nombre="Ivan", Apellidos="Cuadros"},
+              new Ingeniero{ Nombre="Juan", Apellidos="Perez" },
+              new Tecnico{ Nombre="Steve", Apellidos="Jobs" },
             };
 
             List<Empleado> empleados = new List<Empleado>();
             foreach (var persona in personas) {
-                empleados.Add(new ReclutamientoServicio().Contratar(persona));
+                empleados.Add(persona.Procesador.Contratar(persona));
             }
             foreach (var empleado in empleados) {
                 Console.WriteLine($"Bienvenido {empleado.Nombre} {empleado.Apellidos} - {empleado.Email}");
-                Console.WriteLine($"EsIngeniero {(empleado.Rol == Rol.Ingeniero ? "Si" : "No")}");
-                Console.WriteLine($"EsTecnico {(empleado.Rol == Rol.Tecnico ? "Si" : "No")}");
             }
             
             Console.ReadLine();
