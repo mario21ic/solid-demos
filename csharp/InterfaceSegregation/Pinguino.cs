@@ -2,7 +2,7 @@ using System;
 
 namespace InterfaceSegregation
 {
-    public class Pinguino : IAve
+    public class Pinguino : IAve, IAveNadar
     {
         public void caminar()
         {
@@ -18,11 +18,6 @@ namespace InterfaceSegregation
         {
             Console.WriteLine("Puede nadar");
         }
-
-        public void volar()
-        {
-            
-            throw new NotImplementedException();
-        }
+        
     }
-}%   
+}   

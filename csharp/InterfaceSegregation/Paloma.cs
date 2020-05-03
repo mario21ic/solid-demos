@@ -2,7 +2,7 @@ using System;
 
 namespace InterfaceSegregation
 {
-    public class Paloma : IAve
+    public class Paloma : IAve, IAveVolar
     {
         public void caminar()
         {
@@ -14,14 +14,9 @@ namespace InterfaceSegregation
             Console.WriteLine("Puede comer");
         }
 
-        public void nadar()
-        {
-            throw new NotImplementedException();
-        }
-
         public void volar()
         {
             Console.WriteLine("Puede volar");
         }
     }
-}%   
+}  
