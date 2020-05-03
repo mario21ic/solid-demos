@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace DependencyInversion
 {
@@ -6,14 +7,18 @@ namespace DependencyInversion
     {
         static void Main(string[] args)
         {
-            Empleado empleado = new Empleado(
-                new Email() {
-                    Subject = "mario21@gmail.com"
-                },
-                new SMS() {
-                    Numero = "966296635"
-                }
-            );
+            IMensaje email = new Email(){
+                Subject = "mario@gmail.com"
+            };
+            IMensaje sms = new SMS(){
+                Numero = "966396646"
+            };
+
+            List<IMensaje> listMensaje = new List<IMensaje>();
+            listMensaje.Add(email);
+            listMensaje.Add(sms);
+
+            Empleado empleado = new Empleado(listMensaje);
             empleado.Send();
         }
     }

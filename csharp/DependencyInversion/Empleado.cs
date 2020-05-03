@@ -1,20 +1,20 @@
 using System;
+using System.Collections.Generic;
 
 namespace DependencyInversion
 {
     public class Empleado
     {
-        private Email _email;
-        private SMS _sms;
-
-        public Empleado(Email email, SMS sms) {
-            _email = email;
-            _sms = sms;
+        private List<IMensaje> _mensajes;
+        public Empleado(List<IMensaje> mensajes) {
+            _mensajes = mensajes;
         }
+ 
 
         public void Send() {
-            _email.EnviarEmail();
-            _sms.EnviarSMS();
+            foreach ( var mensaje in _mensajes) {
+                mensaje.EnviarMensaje();
+            }
         }
     }
 }
